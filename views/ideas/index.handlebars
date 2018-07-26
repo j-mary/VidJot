@@ -1,0 +1,24 @@
+{{#if ideas}}
+  <div class="card card-header mb-2">
+    <div class="d-flex justify-content-between">
+      <div>
+        <input id="search" type="text" class="form-control" placeholder="Search..." name="search">
+      </div>
+      <a href="/ideas/add" class="btn btn-dark">Add New Idea</a>
+    </div>
+  </div>
+{{/if}}
+
+{{#each ideas}}
+  <div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{details}}</p>
+    <a href="/ideas/edit/{{id}}" class="btn btn-block btn-dark mb-1">Edit</a>
+    <form method="post" action="/ideas/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form>
+  </div>
+{{else}}
+  <p>No video ideas listed</p>
+{{/each}}
